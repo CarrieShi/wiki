@@ -1,0 +1,21 @@
+### GROUP_CONCAT
+
+GROUP_CONCAT()函数可以将多条记录的同一字段的值，拼接成一条记录返回。但是默认情况下，这个拼接最大长度是有限制的，导致结果不完整。
+
+show variables like 'group_concat_max_len';
+
+设置方式：
+
+修改配置文件my.ini：
+
+在[mysqld]下新增配置：group_concat_max_len = 4294967295;
+
+注意是：在[mysqld]下新增；在[mysqld]下新增；在[mysqld]下新增；
+
+然后重启mysql服务，然后通过上面的查询sql进行查看是否生效。
+
+ 
+
+如果是生产环境，不能重启，可以通过sql命令临时修改，mysql服务再次重启后失效，执行命令：
+SET GLOBAL group_concat_max_len = 4294967295;
+SET SESSION group_concat_max_len = 4294967295;
