@@ -19,3 +19,6 @@ show variables like 'group_concat_max_len';
 如果是生产环境，不能重启，可以通过sql命令临时修改，mysql服务再次重启后失效，执行命令：
 SET GLOBAL group_concat_max_len = 4294967295;
 SET SESSION group_concat_max_len = 4294967295;
+
+### 触发锁等待超时
+SHOW VARIABLES LIKE 'innodb_lock_wait_timeout'
